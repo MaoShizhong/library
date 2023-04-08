@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&display=swap');
+
+:root {
+    --darkest: #0e0d0d;
+    --darker: #181818;
+    --dark: #1F1F1F;
+    --darker-teal: #37AA9C;
+    --lighter-teal: #94F3E4;
+}
+
+body {
+    color: white;
+    font-family: 'Oxygen', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--darkest);
+    height: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & #logo {
+        color: white;
+        font-family: 'Righteous', sans-serif;
+        font-size: 5rem;
+        margin-left: 20rem;
+        text-decoration: none;
+
+        &:visited {
+            color: white;
+        }
+    }
+}
+
+main {
+    flex: 1;
+    display: flex;
+}
+
+#sidebar {
+    background-color: var(--darker);
+    width: 20rem;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    & #stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75%;
+
+        & h5 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+    
+        & p {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0;
+            margin-top: 0.5rem;
+            padding-bottom: 1.8rem;
+            width: 100%;
+        }
+    }
+
+    & #add {
+        background-color: var(--darker-teal);
+        color: var(--darker);
+        font: 1.6rem 'Oxygen', sans-serif;
+        border: none;
+        border-radius: 1rem;
+        margin-bottom: 4rem;
+        height: 3rem;
+        width: 60%;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.divide {
+    border-bottom: 1px groove #707070;
+}
+
+#library {
+    background-color: var(--dark);
+    padding: 3rem;
+    flex: 1;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 240px);
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 1rem;
+}
