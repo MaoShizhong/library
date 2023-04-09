@@ -109,7 +109,6 @@ main {
     position: absolute;
     height: 100vh;
     width: 100vw;
-    z-index: 1;
     backdrop-filter: blur(4px) brightness(50%);
     display: flex;
     justify-content: center;
@@ -121,6 +120,7 @@ main {
         border: 3px solid white;
         background-color: var(--darker);
         padding: 1rem;
+        z-index: 2;
     }
 }
 
