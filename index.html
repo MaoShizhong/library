@@ -25,12 +25,41 @@
                     <h5>Unread:</h5>
                     <p>0</p>
                 </div>
-                <button id="add">Add book</button>
+                <button class="add">Add book</button>
             </div>
             <div id="library">
 
             </div>
         </main>
+
+        <div id="backdrop" class="hidden">
+            <div id="new-book">
+                <form action="#" method="post">
+                    <div>
+                        <div class="entry">
+                            <label for="title">Title</label>
+                            <input id="title" name="title" type="text" placeholder="Title" autocomplete="off">
+                        </div>
+                        <div class="entry">
+                            <label for="author">Author</label>
+                            <input id="author" name="author" type="text" placeholder="Author" autocomplete="off">
+                        </div>
+                        <div class="entry">
+                            <label for="pages">Page Count</label>
+                            <input id="pages" name="pages" type="number" placeholder="Page Count" autocomplete="off">
+                        </div>
+                        <div id="read">
+                            <input type="checkbox" id="read-status" name="read-status">
+                            <label for="read-status">Read</label>
+                        </div>
+                    </div>
+
+                    <button class="add" type="submit">Add Book</button>
+                </form>
+            </div>
+        </div>
     </body>
+
+    
 
 </html>
