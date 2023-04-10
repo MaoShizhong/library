@@ -17,15 +17,15 @@ const overlayForm = document.querySelector('#new-book');
 const form = document.querySelector('form');
 
 newBookOverlay.addEventListener('click', showOverlay);
-overlayBackdrop.addEventListener('click', hideOverlay);
+overlayBackdrop.addEventListener('mousedown', hideOverlay);
 
 function showOverlay() {
-    overlayBackdrop.classList.remove('hidden');
+    overlayBackdrop.classList.remove('invisible');
 }
 
 function hideOverlay(e) {
     if (e.target === this) {
-        overlayBackdrop.classList.add('hidden');
+        overlayBackdrop.classList.add('invisible');
         form.reset();
     }
 }

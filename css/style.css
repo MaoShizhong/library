@@ -72,6 +72,10 @@ main {
             padding-bottom: 1.8rem;
             width: 100%;
         }
+
+        & .divide {
+            border-bottom: 1px groove #707070;
+        }
     }
 }
 
@@ -91,10 +95,6 @@ main {
     }
 }
 
-.divide {
-    border-bottom: 1px groove #707070;
-}
-
 #library {
     background-color: var(--dark);
     padding: 3rem;
@@ -103,6 +103,19 @@ main {
     grid-template-rows: repeat(auto-fill, 240px);
     grid-template-columns: repeat(auto-fill, 200px);
     gap: 1rem;
+
+    & #empty-library {
+        grid-row: 1 / -1;
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & h1 {
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+    }
 }
 
 #backdrop {
@@ -115,11 +128,12 @@ main {
     align-items: center;
 
     & #new-book {
-        height: 400px;
-        width: 340px;
-        border: 3px solid white;
+        height: 330px;
+        width: 260px;
+        border: 3px solid var(--dark);
+        border-radius: 2rem;
         background-color: var(--darker);
-        padding: 1rem;
+        padding: 1.8rem;
         z-index: 2;
     }
 }
@@ -133,18 +147,29 @@ form {
     &>div {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.8rem;
     }
 
-    & .entry {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 4px;
+    & input {
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.7rem;
+        font-size: 1.3rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    & #overlay-add {
+        margin-bottom: 0;
     }
 }
 
-.hidden {
+.invisible {
     visibility: hidden;
+}
+
+.hidden {
+    display: none;
 }
