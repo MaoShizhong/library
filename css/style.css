@@ -100,9 +100,9 @@ main {
     padding: 3rem;
     flex: 1;
     display: grid;
-    grid-template-rows: repeat(auto-fill, 240px);
-    grid-template-columns: repeat(auto-fill, 200px);
-    gap: 1rem;
+    grid-template-rows: repeat(auto-fill, 260px);
+    grid-template-columns: repeat(auto-fill, 220px);
+    gap: 2rem;
 
     & #empty-library {
         grid-row: 1 / -1;
@@ -114,6 +114,42 @@ main {
         & h1 {
             font-size: 1.6rem;
             font-weight: 300;
+        }
+    }
+
+    & .card {
+        background-color: var(--darkest);
+        border-radius: 1rem;
+        height: 100%;
+        width: 100%;
+        padding: 0.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & .book-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &>button {
+                background-color: var(--darker-teal);
+                border: none;
+                border-radius: 0.5rem;
+                height: 1.6rem;
+                width: 3.4rem;
+                font-family: inherit;
+                font-size: 1rem;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &>div>* {
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
     }
 }
