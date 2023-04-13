@@ -20,7 +20,7 @@ body {
 
 header {
     background-color: var(--darkest);
-    height: 8rem;
+    height: 7.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,24 +97,21 @@ main {
 
 #library {
     background-color: var(--dark);
-    padding: 3rem;
+    padding: 1.8rem;
     flex: 1;
     display: grid;
     grid-template-rows: repeat(auto-fill, 260px);
-    grid-template-columns: repeat(auto-fill, 220px);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, 210px);
+    gap: 1.8rem;
 
     & #empty-library {
+        font-size: 1.6rem;
+        font-weight: 300;
         grid-row: 1 / -1;
         grid-column: 1 / -1;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        & h1 {
-            font-size: 1.6rem;
-            font-weight: 300;
-        }
     }
 
     & .card {
@@ -126,6 +123,17 @@ main {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        & .book-details {  
+            & h4 {
+                font-size: 1.4rem;
+                margin: 1.1rem;
+            }
+
+            & p:first-of-type {
+                font-style: italic;
+            }
+        }
 
         & .book-bottom {
             display: flex;
@@ -163,8 +171,7 @@ main {
     justify-content: center;
     align-items: center;
 
-    & #new-book {
-        height: 330px;
+    & #new-book {3x;
         width: 260px;
         border: 3px solid var(--dark);
         border-radius: 2rem;
@@ -183,7 +190,7 @@ form {
     &>div {
         display: flex;
         flex-direction: column;
-        gap: 1.8rem;
+        gap: 1.5rem;
     }
 
     & input {
@@ -199,6 +206,7 @@ form {
 
     & #overlay-add {
         margin-bottom: 0;
+        margin-top: 2rem;
     }
 }
 
@@ -207,5 +215,5 @@ form {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
