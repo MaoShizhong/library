@@ -1,3 +1,4 @@
+const themeButton = document.querySelector('#theme');
 const newBookOverlay = document.querySelector('#add-book');
 const overlayBackdrop = document.querySelector('#backdrop');
 const overlayForm = document.querySelector('#new-book');
@@ -8,6 +9,7 @@ const library = document.querySelector('#library');
 const deletes = document.getElementsByClassName('delete');
 const bookCards = document.getElementsByClassName('card');
 
+themeButton.addEventListener('click', changeTheme);
 newBookOverlay.addEventListener('click', showOverlay);
 overlayBackdrop.addEventListener('mousedown', hideOverlay);
 form.addEventListener('submit', addBookToLibrary);
@@ -111,6 +113,14 @@ function updateStats() {
     readBooks.textContent = `${myLibrary.filter(book => book.read).length}`;
     const unreadBooks = document.querySelector('#unread');
     unreadBooks.textContent = `${myLibrary.filter(book => !book.read).length}`;
+}
+
+function changeTheme() {
+    const site = document.querySelector('html');
+    site.classList.toggle('dark');
+    site.classList.toggle('light');
+    themeButton.classList.toggle('icon-theme-dark');
+    themeButton.classList.toggle('icon-theme-light');
 }
 
 function showOverlay() {

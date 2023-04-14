@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="dark">
 
     <head>
         <meta charset="UTF-8">
@@ -14,6 +14,7 @@
     <body>
         <header>
             <a id="logo" href="index.html">library</a>
+            <button id="theme" class="icon icon-theme-dark"></button>
         </header>
         <main>
             <div id="sidebar">
@@ -36,9 +37,9 @@
             <div id="new-book">
                 <form action="#" method="post">
                     <div>
-                        <input id="title" name="title" type="text" placeholder="Title" autocomplete="off" autofocus>
-                        <input id="author" name="author" type="text" placeholder="Author" autocomplete="off">
-                        <input id="pages" name="pages" type="number" placeholder="Page Count" autocomplete="off">
+                        <input id="title" name="title" type="text" placeholder="Title" autocomplete="off" required>
+                        <input id="author" name="author" type="text" placeholder="Author" autocomplete="off" required>
+                        <input id="pages" name="pages" type="number" placeholder="Page Count" autocomplete="off" required>
                         <div id="read">
                             <input type="checkbox" id="read-status" name="read-status">
                             <label for="read-status">Read</label>
