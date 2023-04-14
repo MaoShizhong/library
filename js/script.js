@@ -4,9 +4,17 @@ const overlayForm = document.querySelector('#new-book');
 const form = document.querySelector('form');
 const library = document.querySelector('#library');
 
+// live HTMLCollections
+const deletes = document.getElementsByClassName('delete');
+const bookCards = document.getElementsByClassName('card');
+
 newBookOverlay.addEventListener('click', showOverlay);
 overlayBackdrop.addEventListener('mousedown', hideOverlay);
 form.addEventListener('submit', addBookToLibrary);
+
+for (let i = 0; i < deletes.length; i++) {
+    deletes[i].addEventListener('click', deleteBook.bind(null, i));
+}
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -22,11 +30,13 @@ function addBookToLibrary(event) {
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
     const read = document.querySelector('#read-status').checked;
+
     myLibrary.push(new Book(title, author, pages, read));
     checkLibrarySize();
     createCardFragment(myLibrary[myLibrary.length - 1]);
+
     // simply while form submission deactivated due to no backend
-    overlayBackdrop.classList.add('invisible');
+    overlayBackdrop.classList.add('hidden');
     form.reset();
     event.preventDefault();
 }
@@ -35,8 +45,12 @@ function createCardFragment(book) {
     const card = document.createDocumentFragment();
     const divCard = document.createElement('div');
     divCard.classList.add('card');
+    divCard.setAttribute('data-index', `${myLibrary.indexOf(book)}`);
         const bookDet = document.createElement('div');
         bookDet.classList.add('book-details');
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = `X`;
+            deleteButton.addEventListener('click', deleteBook.bind(null, book));
             const bookTitle = document.createElement('h4');
             bookTitle.textContent = `${book.title}`;
             const bookAuthor = document.createElement('p');
@@ -52,6 +66,7 @@ function createCardFragment(book) {
 
     card.appendChild(divCard);
         divCard.appendChild(bookDet);
+            bookDet.appendChild(deleteButton);
             bookDet.appendChild(bookTitle);
             bookDet.appendChild(bookAuthor);
             bookDet.appendChild(bookPages);
@@ -65,6 +80,20 @@ function createCardFragment(book) {
 function appendFragment(fragment) {
     library.appendChild(fragment);
     updateStats();
+}
+
+function deleteBook(book) {
+    const i = myLibrary.indexOf(book);
+    myLibrary.splice(i, 1);
+    bookCards[i].replaceChildren();
+    bookCards[i].remove();
+    updateDataIndexes(i);
+}
+
+function updateDataIndexes(i) {
+    for (let card of bookCards) {
+        if (Number(card.dataset.index) > i) card.dataset.index = Number(card.dataset.index) - 1;
+    }
 }
 
 function checkLibrarySize() {
@@ -83,12 +112,12 @@ function updateStats() {
 }
 
 function showOverlay() {
-    overlayBackdrop.classList.remove('invisible');
+    overlayBackdrop.classList.remove('hidden');
 }
 
 function hideOverlay(e) {
     if (e.target === this) {
-        overlayBackdrop.classList.add('invisible');
+        overlayBackdrop.classList.add('hidden');
         form.reset();
     }
 }

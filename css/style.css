@@ -5,8 +5,8 @@
     --darkest: #0e0d0d;
     --darker: #181818;
     --dark: #1F1F1F;
-    --darker-teal: #37AA9C;
-    --lighter-teal: #94F3E4;
+    --lightGrey: #808080;
+    --teal: #37AA9C;
 }
 
 body {
@@ -81,7 +81,7 @@ main {
 
 .add {
     align-self: center;
-    background-color: var(--darker-teal);
+    background-color: var(--teal);
     color: var(--darker);
     font: 1.6rem 'Oxygen', sans-serif;
     border: none;
@@ -125,13 +125,41 @@ main {
         justify-content: space-between;
 
         & .book-details {  
+            display: flex;
+            flex-direction: column;
+            
+            & button {
+                background-color: var(--darkest);
+                border: none;
+                border-radius: 0.75rem;
+                color: var(--lightGrey);
+                font-family: inherit;
+                font-weight: bold;
+                text-align: center;
+                line-height: 1rem;
+                height: 1.5rem;
+                width: 1.5rem;
+                margin: 0.5rem 0.5rem 0 0;
+                align-self: flex-end;
+
+                &:hover {
+                    background-color: var(--dark);
+                    cursor: pointer;
+                }
+            }
+
             & h4 {
-                font-size: 1.4rem;
-                margin: 1.1rem;
+                font-size: 1.2rem;
+                height: 2.9rem;
+                width: 85%;
+                margin: 0.5rem 1.1rem 1.5rem;
+                word-wrap: break-word;
+                white-space: normal;
             }
 
             & p:first-of-type {
                 font-style: italic;
+                margin-bottom: 0.2rem;
             }
         }
 
@@ -141,7 +169,7 @@ main {
             align-items: center;
 
             &>button {
-                background-color: var(--darker-teal);
+                background-color: var(--teal);
                 border: none;
                 border-radius: 0.5rem;
                 height: 1.6rem;
@@ -208,10 +236,6 @@ form {
         margin-bottom: 0;
         margin-top: 2rem;
     }
-}
-
-.invisible {
-    visibility: hidden;
 }
 
 .hidden {
