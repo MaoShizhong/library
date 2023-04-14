@@ -88,6 +88,8 @@ function deleteBook(book) {
     bookCards[i].replaceChildren();
     bookCards[i].remove();
     updateDataIndexes(i);
+    updateStats();
+    checkLibrarySize();
 }
 
 function updateDataIndexes(i) {
