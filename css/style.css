@@ -202,8 +202,15 @@ main {
             border-radius: 0.5rem;
             height: 1.6rem;
             width: 3.4rem;
+            margin-bottom: 1rem;
             font-family: inherit;
             font-size: 1rem;
+        }
+
+        &>.readBtn {
+            background-color: transparent;
+            color: var(--font);
+            margin-left: 0.5rem;
         }
     }
 

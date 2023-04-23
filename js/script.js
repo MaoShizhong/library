@@ -5,24 +5,27 @@ const overlayForm = document.querySelector('#new-book');
 const form = document.querySelector('form');
 const library = document.querySelector('#library');
 
-// live HTMLCollections
-const deletes = document.getElementsByClassName('delete');
+// live HTMLCollection
 const bookCards = document.getElementsByClassName('card');
 
 themeButton.addEventListener('click', changeTheme);
 newBookOverlay.addEventListener('click', showOverlay);
+
 overlayBackdrop.addEventListener('mousedown', hideOverlay);
 form.addEventListener('submit', addBookToLibrary);
 
-for (let i = 0; i < deletes.length; i++) {
-    deletes[i].addEventListener('click', deleteBook.bind(null, i));
-}
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    changeReadStatus() {
+        this.read = !this.read;
+    }
 }
 
 const myLibrary = [];
@@ -61,8 +64,10 @@ function createCardFragment(book) {
             bookPages.textContent = `${book.pages}`;
         const bookBot = document.createElement('div');
         bookBot.classList.add('book-bottom');
-            const bookRead = document.createElement('p');
-            bookRead.innerHTML = `${book.read ? 'Read' : '<i>Not Read</i>'}`;
+            const bookRead = document.createElement('button');
+            bookRead.classList.add('readBtn');
+            bookRead.addEventListener('click', changeStatus.bind(null, book));
+            bookRead.innerHTML = `${book.read ? 'Read' : '<i>Unread</i>'}`;
             const edit = document.createElement('button');
             edit.textContent = 'Edit';
 
@@ -92,6 +97,14 @@ function deleteBook(book) {
     updateDataIndexes(i);
     updateStats();
     checkLibrarySize();
+}
+
+function changeStatus(book) {
+    const i = myLibrary.indexOf(book);
+    const readStatus = bookCards[i].querySelector('.readBtn');
+    readStatus.innerHTML = (readStatus.innerHTML === 'Read') ? '<i>Unread</i>' : 'Read';
+    myLibrary[i].changeReadStatus();
+    updateStats();
 }
 
 function updateDataIndexes(i) {
